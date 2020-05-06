@@ -1,0 +1,41 @@
+/* CSS style */
+html {
+    scroll-behavior: smooth;
+}
+
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.scroll-top__content {
+    height: 5000px;
+    border: 1px black solid;
+    margin: 50px 100px 20px 100px;
+    padding: 50px;
+    text-align: center;
+}
+
+scroll-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: #fff  url("assets/svg/top-arrow.svg") no-repeat center center;
+    background-size: 25px 25px;
+    border: 1px #000 solid;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: opacity .3s;
+}
+
+scroll-top:hover {
+    transform: scale3d(1.05, 1.05, 1);
+}
+
+scroll-top:active {
+    transform: scale3d(0.95, 0.95, 1);
+}
