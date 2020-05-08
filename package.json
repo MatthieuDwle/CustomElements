@@ -7,7 +7,7 @@
     "dev": "npx http-server ./src -a 127.0.0.1 -p 8080 --kill"
   },
   "jest": {
-    "testEnvironment": "jest-environment-puppeteer-jsdom"
+    "testEnvironment": "jest-environment-happy-dom"
   },
   "author": "",
   "license": "ISC",

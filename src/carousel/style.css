@@ -1,0 +1,103 @@
+body {
+    padding: 25px;
+    overflow-x: hidden;
+    background-color: #e79526;
+}
+
+my-carousel + * > * {
+    margin-top: 25px;
+}
+
+.carousel__items::after {
+    content: '';
+    clear: both;
+    display: table;
+}
+
+.carousel__container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.carousel__items {
+    height: 300px;
+    transition: transform .3s;
+}
+
+.carousel__item {
+    float: left;
+    height: 100%;
+}
+
+.carousel__controls {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.carousel__button {
+    border: 1px #ddd solid;
+    height: 30px;
+    width: 30px;
+    border-radius: 30px;
+    z-index: 4;
+    transition: opacity .3s;
+}
+
+.carousel__button:hover {
+    cursor: pointer;
+    transform: scale3d(1.1, 1.1, 1);
+}
+
+.carousel__button:active {
+    cursor: pointer;
+    transform: scale3d(0.9, 0.9, 1);
+}
+
+.carousel__previous {
+    margin-left: -15px;
+    background: #fff url("assets/svg/left-arrow.svg") no-repeat center center;
+    background-size: 15px 15px;
+}
+
+.carousel__next {
+    margin-right: -15px;
+    background: #fff url("assets/svg/right-arrow.svg") no-repeat center center;
+    background-size: 15px 15px;
+}
+
+.carousel__previous-hidden, .carousel__next-hidden {
+    opacity: 0;
+}
+
+.carousel__pagination {
+    margin-top: 5px;
+    z-index: 4;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel__pagination > * + * {
+    margin-left: 10px;
+}
+
+.carousel__pagination-button {
+    display: block;
+    background-color: #fff;
+    border-radius: 10px;
+    height: 10px;
+    width: 10px;
+    cursor: pointer;
+    transform-origin: center center;
+    transition: transform .3s;
+}
+
+.carousel__pagination-button.active, .carousel__pagination-button:hover {
+    transform: scale3d(1.15, 1.15, 1);
+}
