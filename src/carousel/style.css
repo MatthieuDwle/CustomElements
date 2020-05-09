@@ -98,6 +98,6 @@ my-carousel + * > * {
     transition: transform .3s;
 }
 
-.carousel__pagination-button.active, .carousel__pagination-button:hover {
-    transform: scale3d(1.15, 1.15, 1);
+.carousel__pagination-button-active, .carousel__pagination-button:hover {
+    transform: scale3d(1.3, 1.3, 1);
 }

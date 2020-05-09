@@ -43,6 +43,7 @@ export default class Carousel extends HTMLElement {
         this.moveCallbacks.push(cb)
     }
 
+
     /**
      * Check on resize if page pass on mobile format
      */
@@ -157,7 +158,7 @@ export default class Carousel extends HTMLElement {
             } else {
                 this.carousel__previous.classList.remove('carousel__previous-hidden')
             }
-            if (index >= this.items.length - this.slidesVisible) {
+            if (index >= this.items.length - this.slidesVisible && !this.options.backToStart) {
                 this.carousel__next.classList.add('carousel__next-hidden')
             } else {
                 this.carousel__next.classList.remove('carousel__next-hidden')
@@ -186,14 +187,19 @@ export default class Carousel extends HTMLElement {
         return elem
     }
     createPagination () {
-        this.paginationLength = this.items.length / this.slidesVisible
         this.pagination = this.createElementWithClass('div', 'carousel__pagination')
-        this.paginationButton = []
-        for (let i = 0; i <= this.paginationLength; i++) {
-            let elem = this.createElementWithClass('div', `carousel__pagination-button${i === 0 ? ' active' : '' }`)
-            this.paginationButton.push(elem)
+        let buttons = []
+        for (let i = 0; i <= this.items.length; i = i + this.slidesVisible) {
+            let elem = this.createElementWithClass('div', `carousel__pagination-button`)
+            elem.addEventListener('click', () => this.canGo(i))
             this.pagination.appendChild(elem)
+            buttons.push(elem)
         }
+        this.onMove(index => {
+            let activeButton = buttons[Math.ceil(index / this.slidesStep)]
+            buttons.forEach(el => el.classList.remove('carousel__pagination-button-active'))
+            activeButton.classList.add('carousel__pagination-button-active')
+        })
         this.carousel__container.appendChild(this.pagination)
     }
 }
