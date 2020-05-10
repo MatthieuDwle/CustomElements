@@ -8,6 +8,10 @@ my-carousel + * > * {
     margin-top: 25px;
 }
 
+.carousel {
+    padding: 10px;
+}
+
 .carousel__items::after {
     content: '';
     clear: both;
@@ -81,6 +85,10 @@ my-carousel + * > * {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.carousel__pagination-hidden {
+    display: none;
 }
 
 .carousel__pagination > * + * {

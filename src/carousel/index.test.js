@@ -1,5 +1,8 @@
 import '@testing-library/jest-dom'
 import 'expect-puppeteer'
+import ''
+import Carousel from './index.js'
+jest.mock('./index.js')
 
 describe('Carousel', () => {
     beforeAll(async () => {
@@ -43,7 +46,6 @@ describe('Carousel', () => {
 
             it('should have valid aria-controls', async () => {
                 const carouselCount = await page.$$eval('my-carousel', el => el.length)
-                console.log(carouselCount)
                 const previous = (await page.$$('.carousel__previous[aria-roledescription="carousel__items"]')).length
                 expect(previous).toBe(carouselCount)
                 const next = (await page.$$('.carousel__next[aria-roledescription="carousel__items"]')).length
@@ -94,7 +96,8 @@ describe('Carousel', () => {
     })
     describe('#Navigation', () => {
         it('should slide right on click', () => {
-
+            const carousel = new Carousel
+            console.log(carousel)
         })
         it('should slide left on click', () => {
 
