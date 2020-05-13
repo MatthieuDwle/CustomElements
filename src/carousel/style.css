@@ -1,7 +1,59 @@
 body {
     padding: 25px;
     overflow-x: hidden;
-    background-color: #e79526;
+}
+
+.container {
+    max-width: 1000px;
+}
+
+.example {
+    border: 1px lightgray solid;
+}
+
+.example > *:not(my-carousel) {
+    padding: 10px 25px;
+}
+
+.example > h3 {
+    margin: 0;
+}
+
+.example + .example {
+    margin-top: 50px;
+}
+
+.features {
+    display: flex;
+    justify-content: center;
+    padding: 25px 0;
+}
+
+.features__list{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-column-gap: 25px;
+    grid-row-gap: 10px;
+    text-align: justify;
+    align-items: center;
+}
+
+.features__list > * + * {
+    margin-top: 5px;
+}
+
+code {
+    display: block;
+}
+
+/*
+Carousel
+ */
+
+/*CSS Style*/
+
+my-carousel {
+    --bgc: #fff;
 }
 
 my-carousel + * > * {
@@ -9,7 +61,8 @@ my-carousel + * > * {
 }
 
 .carousel {
-    padding: 10px;
+    padding: 10px 25px;
+    overflow: hidden;
 }
 
 .carousel__items::after {
@@ -25,12 +78,20 @@ my-carousel + * > * {
 }
 
 .carousel__items {
-    height: 300px;
+    height: auto;
     transition: transform .3s;
 }
 
 .carousel__item {
+    position: relative;
     float: left;
+}
+
+.carousel__item > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
     height: 100%;
 }
 
@@ -44,7 +105,7 @@ my-carousel + * > * {
 }
 
 .carousel__button {
-    border: 1px #ddd solid;
+    border: 2px black solid;
     height: 30px;
     width: 30px;
     border-radius: 30px;
@@ -64,13 +125,13 @@ my-carousel + * > * {
 
 .carousel__previous {
     margin-left: -15px;
-    background: #fff url("assets/svg/left-arrow.svg") no-repeat center center;
+    background: var(--bgc) url("assets/svg/left-arrow.svg") no-repeat center center;
     background-size: 15px 15px;
 }
 
 .carousel__next {
     margin-right: -15px;
-    background: #fff url("assets/svg/right-arrow.svg") no-repeat center center;
+    background: var(--bgc) url("assets/svg/right-arrow.svg") no-repeat center center;
     background-size: 15px 15px;
 }
 
@@ -79,7 +140,7 @@ my-carousel + * > * {
 }
 
 .carousel__pagination {
-    margin-top: 5px;
+    margin-top: 15px;
     z-index: 4;
     width: 100%;
     display: flex;
@@ -97,8 +158,8 @@ my-carousel + * > * {
 
 .carousel__pagination-button {
     display: block;
-    background-color: #fff;
-    border-radius: 10px;
+    background-color: var(--accent);
+    clip-path: circle();
     height: 10px;
     width: 10px;
     cursor: pointer;
@@ -108,4 +169,18 @@ my-carousel + * > * {
 
 .carousel__pagination-button-active, .carousel__pagination-button:hover {
     transform: scale3d(1.3, 1.3, 1);
+}
+
+@media screen and (max-width: 800px) {
+    body {
+        padding: 15px;
+    }
+
+    .features__list {
+        grid-template-columns: 1fr;
+    }
+
+    .features__list code {
+        margin-top: 15px;
+    }
 }

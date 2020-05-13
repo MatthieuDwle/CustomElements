@@ -88,11 +88,22 @@ export default class Carousel extends HTMLElement {
      */
     setOptions() {
         return {
-            slidesVisible: parseInt(this.getAttribute('data-slides-visible')),
-            slidesStep: parseInt(this.getAttribute('data-slides-step')),
+            slidesVisible: parseInt(this.getAttribute('data-slides-visible')) || 3,
+            slidesStep: parseInt(this.getAttribute('data-slides-step')) || 3,
             backToStart: this.getAttribute('data-not-back-to-start') === null && this.getAttribute('data-slides-infinite') === null,
             pagination: this.getAttribute('data-slides-pagination') !== null && this.getAttribute('data-slides-infinite') === null,
-            infinite: this.getAttribute('data-slides-infinite') !== null
+            infinite: this.getAttribute('data-slides-infinite') !== null,
+            slidesRatio: this.setRatio() || 16/9
+        }
+    }
+
+    setRatio() {
+        let ratio = this.getAttribute('data-slides-ratio')
+        if (ratio) {
+            ratio = ratio.split('/')
+            console.log('xc')
+            let reducer = (a,b) => parseInt(a)/parseInt(b)
+            return ratio.reduce(reducer)
         }
     }
 
@@ -207,6 +218,8 @@ export default class Carousel extends HTMLElement {
         this.ratio = this.items.length / this.slidesVisible
         this.carousel__items.style.width = this.ratio * 100 + '%'
         this.items.forEach(item => item.style.width = ((100 / this.slidesVisible) / this.ratio) + '%')
+        this.items.forEach(item => item.style.paddingTop = (((100 / this.slidesVisible) / this.ratio))/this.options.slidesRatio + '%')
+        console.log(this.options.slidesRatio)
         if (this.options.pagination) this.isMobile ? this.pagination.classList.add('carousel__pagination-hidden') : this.pagination.classList.remove('carousel__pagination-hidden')
     }
 

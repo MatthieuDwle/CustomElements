@@ -3,13 +3,6 @@ html {
     scroll-behavior: smooth;
 }
 
-.header {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
 .scroll-top__content {
     height: 5000px;
     border: 1px black solid;
@@ -38,4 +31,10 @@ scroll-top:hover {
 
 scroll-top:active {
     transform: scale3d(0.95, 0.95, 1);
+}
+
+@media screen and (max-width: 800px) {
+    .scroll-top__content {
+        margin: 50px 0;
+    }
 }
