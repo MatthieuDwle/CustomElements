@@ -1,0 +1,184 @@
+body, html {
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+h1, h2, h3 {
+    margin: 0;
+}
+
+h1 {
+    font-size: 7rem;
+}
+
+h2 {
+    font-size: 6rem;
+    font-weight: 600;
+}
+
+code {
+    font-size: 2rem;
+}
+
+p {
+    text-align: justify;
+    font-weight: 600;
+    font-size: 2rem;
+}
+
+pre {
+    background-color: inherit;
+    overflow: hidden;
+}
+
+a {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+#elem1 h2, #elem3 h2, #elem5 h2 {
+    text-align: right;
+    margin-right: 15px;
+}
+
+/* CSS Style */
+
+page-scroller {
+    overflow: hidden;
+}
+
+.page-scroller__container {
+    transition: transform 1s;
+}
+
+.page-scroller__container::after {
+    content: '';
+}
+
+.element {
+    height: 100vh;
+    width: 100vw;
+    padding: 200px;
+    overflow: hidden;
+}
+
+.element:not(#elem0) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 75px;
+    align-items: center;
+    padding: 75px 50px;
+}
+
+#elem0 {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#elem1 {
+    background-color: #f44336;
+}
+
+#elem2 {
+    background-color: #e91e63;
+}
+
+#elem3 {
+    background-color: #673ab7;
+}
+
+#elem3 {
+    background-color: #03a9f4;
+}
+
+#elem4 {
+    background-color: #4caf50;
+}
+
+#elem5 {
+    background-color: #ffc107;
+}
+#elem6 {
+    background-color: red;
+}
+#elem7 {
+    background-color: blue;
+}
+
+.page-scroller__pagination {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    right: 0;
+    padding: 10px;
+    z-index: 10;
+    mix-blend-mode: difference;
+    height: 100vh;
+}
+
+.page-scroller__pagination-button {
+    background-color: #fff;
+    display: block;
+    height: 10px;
+    width: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform .2s;
+    margin: 0 10px;
+}
+
+.page-scroller__pagination-button + * {
+    margin-top: 10px;
+}
+
+.page-scroller__button-active, .page-scroller__pagination-button:hover {
+    transform: scale(1.5);
+}
+
+@media screen and (max-width: 800px) {
+    body, html {
+        overflow: auto;
+    }
+    .element {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        height: auto;
+    }
+    .element:not(#elem0) {
+        display: flex;
+        padding: 50px 25px;
+    }
+    #elem0 {
+        padding: 0 25px;
+        height: 100vh;
+    }
+    h1, h2, h3 {
+        margin: 0;
+    }
+
+    h1 {
+        font-size: 3rem;
+    }
+
+    h2 {
+        order: -1;
+        font-size: 2rem;
+        font-weight: 600;
+    }
+
+    p, a, code {
+        font-size: 1rem;
+    }
+    .page-scroller__pagination {
+        display: none;
+    }
+}
