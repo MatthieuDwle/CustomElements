@@ -35,7 +35,7 @@
     "babel-jest": "^25.5.1",
     "chrome-launcher": "^0.13.1",
     "jest-environment-jsdom-sixteen": "^1.0.3",
-    "webpack": "^4.43.0"
+    "webpack": "^5.94.0"
   },
   "description": ""
 }
